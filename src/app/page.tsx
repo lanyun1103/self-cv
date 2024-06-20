@@ -1,18 +1,9 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-24 w-full">
+    <main className="flex min-h-screen flex-col p-6 md:p-24 w-full">
       <div className="flex flex-col space-y-6">
         <h1 className="font-bold text-4xl mb-8">About Me</h1>
-        <div className="flex items-center space-x-6">
-          {/* <Image
-            src="/profile.jpg"
-            alt="Profile"
-            width={200}
-            height={200}
-            className="rounded-full"
-          /> */}
+        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
           <div>
             <h2 className="text-2xl font-bold">王凯禹</h2>
             <p className="text-gray-600">全栈开发工程师 算法工程师</p>
@@ -150,7 +141,7 @@ function Skills() {
   return (
     <div className="flex flex-col space-y-4">
       <div className="text-xl font-bold font-mono">技能</div>
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {highlightedSkills.map((skill, index) => (
           <div key={index}>
             <div className="font-bold">{skill.name}</div>
@@ -192,47 +183,6 @@ function Awards() {
       </ol>
     </div>
   );
-  function Hobbies() {
-    const hobbies = [
-      {
-        name: "吉他演奏",
-        description: "热爱音乐，擅长吉他演奏，喜欢创作自己的音乐作品。",
-      },
-      {
-        name: "阅读",
-        description: "热爱阅读，涉猎广泛，从文学到科技，不断扩展自己的知识面。",
-      },
-      {
-        name: "公路骑行",
-        description:
-          "喜欢骑行，享受在公路上自由驰骋的感觉，挑战自我，探索未知。",
-      },
-      {
-        name: "音乐",
-        description:
-          "音乐爱好者，喜欢欣赏各种流派的音乐，从古典到流行，陶冶情操。",
-      },
-      {
-        name: "数学",
-        description:
-          "对数学有浓厚的兴趣，喜欢探索数学领域的奥秘，挑战自己的逻辑思维。",
-      },
-    ];
-
-    return (
-      <div className="flex flex-col space-y-4">
-        <div className="text-xl font-bold font-mono">爱好</div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {hobbies.map((hobby, index) => (
-            <div key={index} className="bg-gray-100 rounded-lg p-4">
-              <div className="font-bold">{hobby.name}</div>
-              <p className="text-gray-700">{hobby.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
 }
 function Hobbies() {
   const hobbies = [
