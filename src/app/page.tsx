@@ -1,4 +1,8 @@
-export default function Home() {
+"use server";
+import { FaGithub, FaTwitter, FaWikipediaW } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+
+export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col p-6 md:p-24 w-full">
       <div className="flex flex-col space-y-6">
@@ -6,7 +10,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
           <div>
             <h2 className="text-2xl font-bold">王凯禹</h2>
-            <p className="text-gray-600">全栈开发工程师 算法工程师</p>
+            <p className="text-gray-600">算法工程师</p>
           </div>
         </div>
         <Schoolar />
@@ -14,6 +18,7 @@ export default function Home() {
         <Skills />
         <Awards />
         <Hobbies />
+        <SocialMedia />
       </div>
     </main>
   );
@@ -46,50 +51,193 @@ function Schoolar() {
 function Experience() {
   const data = [
     {
+      title: "商城比价系统优化",
+      duration: "2024.01 - 2024.03",
+      description: [
+        "设计并实现新版同款物资识别算法，提升新旧商品覆盖率达到 85%（覆盖率提高 20%）",
+        "基于 NER 技术，实现商品名称、型号自动识别，提升商品识别准确率 10%",
+        "开发物资匹配算法，基于商品特征向量和类目属性实现跨品类比价",
+        "设计并实现自动化比价分析系统，月均为企业节省采购成本超 100 万",
+        "项目成果：月均比价下单量提升 43%，采购成本平均降低 15.3%",
+      ],
+      techStack: ["Python", "FastAPI", "NER", "MySQL", "scikit-learn"],
+    },
+    {
+      title: "招标文件智能分析系统",
+      duration: "2024.01 - 2024.03",
+      description: [
+        "设计并实现基于 LLM 的招标文件智能分析系统，支持多种格式文件解析",
+        "开发招标要求自动提取模块，实现关键信息（资质要求、评分标准等）的精准识别",
+        "构建招标合规性检查引擎，自动识别和标注潜在风险点",
+        "项目成果：文件分析时间从人工 2 小时缩短至 3 分钟，准确率达 92%",
+      ],
+      techStack: ["Next.js", "LangGraph", "vLLM", "OCR"],
+    },
+    {
+      title: "招标法律法规问答系统",
+      duration: "2024.02 - 2024.03",
+      description: [
+        "基于 RAG 技术构建专业招标法律法规知识库，覆盖 1000+ 法规文件",
+        "设计并实现多轮对话上下文管理，支持复杂法律场景推理",
+        "开发法规变更追踪功能，自动更新知识库并提醒用户法规更新",
+        "实现相关案例推荐功能，为用户提供类似法律问题的参考",
+        "项目成果：问答准确率达 96%，日均服务 200+ 次法规咨询",
+      ],
+      techStack: ["Next.js", "LangGraph", "Milvus", "vLLM", "Redis", "FastAPI"],
+    },
+    {
+      title: "AI 项目资源调度系统",
+      duration: "2024.01 - 2024.02",
+      description: [
+        "优化 LLM 推理框架，将输出速度从 80 token/s 提升至 197 token/s（提升 147%）",
+        "设计并实现 GPU 资源调度系统，支持单 GPU 8 人并发对话",
+        "开发自动化 AI 资源分配与排队机制，优化用户等待体验",
+        "实现动态负载均衡，根据 GPU 使用率自动扩缩容",
+        "项目成果：服务成本降低 35%，用户等待时间减少 60%",
+      ],
+      techStack: ["Python", "PyTorch", "CUDA", "FastAPI", "Redis", "Docker"],
+    },
+    {
       title: "优小蜜智能客服全栈开发",
-      description:
-        "主导技术选型与全栈开发工作，负责优化安徽省优质采科技发展有限公司的智能客服系统。使用Vue3, Pinia, ExpressJS, Spring Boot等技术栈，结合腾讯云函数，AWS Lambda，Azure OpenAI进行优化，成功部署后客服电话量降低约13%。",
-      link: "优小蜜智能客服",
+      duration: "2023.06 - 2024.03",
+      description: [
+        "主导大模型技术选型与架构设计，完成项目全栈开发",
+        "设计并实现基于 ChatGPT 的多轮对话系统，支持上下文记忆和知识库检索",
+        "开发智能路由分发系统，根据用户问题类型自动分配到不同的专业客服团队",
+        "使用 Redis 实现会话管理和缓存，优化响应速度提升约 40%",
+        "项目上线后客服电话量降低约 25%，电话接通率提升 15%",
+        "对话日均处理量超 2000 条，平均响应时间 0.35 秒",
+        "获评安徽省优质采创新项目二等奖",
+      ],
+      techStack: [
+        "Vue3",
+        "Pinia",
+        "ExpressJS",
+        "Spring Boot",
+        "ChatGPT",
+        "Redis",
+        "Prompt Engineering",
+      ],
+      link: "https://www.youzhicai.com/yzcgpt/chat-entry",
     },
     {
-      title: "优质采电子商城项目搜索功能",
-      description:
-        "担任Java后端开发，使用Spring Boot, JWT, Mybatis Plus, TiDB，Elatic search等技术优化搜索体验。物资查询与搜索速度分别提升37%与30%，搜索下单转化率11.2%，年订单量超亿元，项目获评年度优秀项目，为公司CMMI认证贡献范例项目。",
-      link: "优质采电子商城",
+      title: "优采商城搜索系统",
+      duration: "2023.01 - 2023.05",
+      description: [
+        "负责搜索系统的架构设计和性能优化",
+        "使用 Elastic Search 构建分布式搜索引擎，实现商品的全文检索和智能推荐",
+        "设计并实现基于用户行为的个性化搜索排序算法",
+        "项目成果：物资查询速度提升 37%，搜索转化率提升 11.2%，年订单量超亿元",
+        "获评安徽省优质采年度优秀项目，成为公司 CMMI 认证的标杆项目",
+      ],
+      techStack: ["Spring Boot", "Elastic Search", "TiDB", "Redis", "MySQL"],
+      link: "https://www.youzhicai.com/xdmysc",
     },
     {
-      title: "工业品模型训练与架构开发",
-      description:
-        "负责项目的架构设计，数据清洗，语料处理，知识图谱构建，以及随机森林算法的调参与训练。采用K-Means算法进行数据行为分类，随机森林算法训练分类模型，结合NLP构建工业品知识图谱，提升问题解答精准度。日均处理问题量超2000条，人工抽检回答正确率提升至87%，RAG召回率提高13.1%。项目获安徽省经信厅支持，推动大模型算法研究。",
+      title: "工业品智能问答系统",
+      duration: "2022.07 - 2022.12",
+      description: [
+        "负责项目整体架构设计和核心算法开发",
+        "设计并实现工业品领域知识图谱，包含超过 50 万实体和 100 万关系",
+        "开发基于 BERT 和 BiLSTM-CRF 的实体识别模型，准确率达到 95%",
+        "实现基于知识图谱的智能问答系统，支持复杂多轮对话",
+        "项目成果：日均处理问题量超 2000 条，答案准确率 87%，RAG 召回率提升 13.1%",
+        "项目获安徽省经信厅专项支持",
+      ],
+      techStack: ["Python", "PyTorch", "BERT", "Neo4j", "FastAPI", "Docker"],
     },
     {
-      title: "知了工品大模型",
-      description:
-        "通过建立词表，微调BERT、BiLSTM和CRF等算法，优化模型在工业品领域的命名实体识别（NER）性能。结合知识图谱等技术，实现了95%以上的物资信息识别与扩展正确率。该项目帮助中大企业进行数字化转型与物资梳理，提升了企业的信息化管理水平和运营效率。",
+      title: "lanyun-chatgpt（个人项目）",
+      duration: "2023.03 - 至今",
+      description: [
+        "基于 ChatGPT-Web 开源项目进行二次开发，实现完整的对话系统",
+        "设计并实现用户管理后台，支持用户权限控制和对话记录管理",
+        "使用 MongoDB 设计数据模型，实现高效的数据存储和查询",
+        "通过 Pinia 实现前端状态管理，优化用户体验",
+        "项目成果：日均 IP 访问量 8.3k，日间平均 7.6 QPS，付费用户超 1k+",
+      ],
+      techStack: [
+        "Vue3",
+        "TypeScript",
+        "ExpressJS",
+        "MongoDB",
+        "TailwindCSS",
+        "NaiveUI",
+      ],
+      link: "https://github.com/lanyun1103/lanyun-chatgpt",
     },
     {
-      title: "个人项目",
-      description:
-        "在开源项目ChatGPT-Web的基础上，独立开发了一个网页对话项目，同时负责用户管理后台系统的完整开发工作。使用了ExpressJs、TypeScript、Vue3、TailwindCSS、NaiveUI、Pinia以及vue-route等前沿技术构建项目。采用MongoDB开发了用户管理系统，通过Pinia进行状态管理优化。项目上线后日独立IP访问量8.3k，4月期间日间平均7.6 QPS，与知识星球星主合作用户数达1k+。",
-      link: "原网址为 lanyun1103.top，现已下线",
+      title: "MD（外包项目）",
+      duration: "2023.01 - 2023.05",
+      description: [
+        "为高校提供仿微信聊天交互的病情记录软件",
+        "基于 LLM 实现智能问答和病情分析功能",
+        "使用 Next.js 开发响应式用户界面，提供流畅的聊天体验",
+      ],
+      techStack: ["Next.js", "TypeScript", "LLM", "TailwindCSS"],
+    },
+    {
+      title: "SoraFlows（开源贡献）",
+      duration: "2023.03 - 至今",
+      description: [
+        "基于 OpenAI Sora 接口开发的前端用户界面",
+        "实现视频生成和管理功能",
+        "参与项目架构设计和核心功能开发",
+      ],
+      techStack: ["React", "TypeScript", "OpenAI API"],
+      link: "https://github.com/SoraFlows/SoraFlows",
+    },
+    {
+      title: "AISourceHub（开源贡献）",
+      duration: "2023.03 - 至今",
+      description: [
+        "参与 AI 资源汇总项目的维护和更新",
+        "贡献优质 AI 相关资源和工具",
+        "协助完善项目文档和分类体系",
+      ],
+      techStack: ["Markdown", "Git"],
+      link: "https://github.com/AmbroseX/Awesome-AISourceHub",
     },
   ];
+
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col space-y-4">
       <div className="text-xl font-bold font-mono">工作经历</div>
-      <ol className="list-decimal pl-6 space-y-4">
+      <div className="space-y-8">
         {data.map((item, index) => (
-          <li key={index}>
-            <div className="font-bold">{item.title}</div>
-            <p className="text-gray-700">{item.description}</p>
+          <div key={index} className="border-l-4 border-gray-200 pl-4">
+            <div className="flex justify-between items-center">
+              <h3 className="font-bold text-lg">{item.title}</h3>
+              <span className="text-gray-500 text-sm">{item.duration}</span>
+            </div>
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              {item.description.map((desc, i) => (
+                <li key={i} className="text-gray-700">
+                  {desc}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {item.techStack.map((tech, i) => (
+                <span
+                  key={i}
+                  className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
             {item.link && (
-              <a href={item.link} className="text-blue-500 hover:underline">
-                项目链接
+              <a
+                href={item.link}
+                className="text-blue-500 hover:underline mt-2 inline-block"
+              >
+                项目链接 →
               </a>
             )}
-          </li>
+          </div>
         ))}
-      </ol>
+      </div>
     </div>
   );
 }
@@ -105,11 +253,6 @@ function Skills() {
       name: "知识图谱",
       description:
         "掌握知识图谱的构建、存储和查询技术，能够使用Neo4j、MongoDB等图数据库进行知识图谱的存储和查询优化。熟悉知识图谱的应用场景，如智能问答、推荐系统等。",
-    },
-    {
-      name: "机器学习",
-      description:
-        "熟练运用各种机器学习算法，如随机森林、支持向量机（SVM）、K-Means聚类等。能够进行特征工程、模型选择和调参优化，提高模型的性能和泛化能力。",
     },
     {
       name: "Next.js",
@@ -133,10 +276,7 @@ function Skills() {
     "Express",
     "Spring Boot",
     "MySQL",
-    "MongoDB",
-    "ElasticSearch",
-    "机器学习",
-    "自然语言处理",
+    "NLP",
   ];
   return (
     <div className="flex flex-col space-y-4">
@@ -187,21 +327,13 @@ function Awards() {
 function Hobbies() {
   const hobbies = [
     {
-      name: "吉他演奏",
-      description: "热爱音乐，擅长吉他演奏，喜欢创作自己的音乐作品。",
-    },
-    {
       name: "阅读",
-      description: "热爱阅读，涉猎广泛，从文学到科技，不断扩展自己的知识面。",
-    },
-    {
-      name: "公路骑行",
-      description: "喜欢骑行，享受在公路上自由驰骋的感觉，挑战自我，探索未知。",
+      description: "热爱阅读，涉猎广泛，从文学到科技。",
     },
     {
       name: "音乐",
       description:
-        "音乐爱好者，喜欢欣赏各种流派的音乐，从古典到流行，陶冶情操。",
+        "音乐爱好者，喜欢欣赏各种流派的音乐，从古典到流行；热爱音乐，擅长吉他演奏。",
     },
     {
       name: "数学",
@@ -219,6 +351,48 @@ function Hobbies() {
             <div className="font-bold">{hobby.name}</div>
             <p className="text-gray-700">{hobby.description}</p>
           </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+function SocialMedia() {
+  const platforms = [
+    {
+      name: "Twitter",
+      url: "https://x.com/Dosh52783629",
+      icon: <FaTwitter />,
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/lanyun1103",
+      icon: <FaGithub />,
+    },
+    {
+      name: "GitHub",
+      url: "https://leetcode.cn/u/li-wei-6/",
+      icon: <SiLeetcode />,
+    },
+    {
+      name: "GitHub",
+      url: "https://zh.wikipedia.org/wiki/User:Lanyun1103",
+      icon: <FaWikipediaW />,
+    },
+  ];
+
+  return (
+    <div className="flex flex-col space-y-4">
+      <div className="text-xl font-bold font-mono">社交媒体</div>
+      <div className="flex gap-4">
+        {platforms.map((platform, index) => (
+          <a
+            aria-label={platform.name}
+            href={platform.url}
+            key={index}
+            className="bg-gray-100 rounded-full p-2 hover:bg-gray-200"
+          >
+            {platform.icon}
+          </a>
         ))}
       </div>
     </div>
