@@ -4,22 +4,23 @@ import { SiLeetcode } from "react-icons/si";
 
 export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-6 md:p-24 w-full">
-      <div className="flex flex-col space-y-6">
-        <h1 className="font-bold text-4xl mb-8">About Me</h1>
-        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-          <div>
-            <h2 className="text-2xl font-bold">王凯禹</h2>
-            <p className="text-gray-600">算法工程师</p>
-          </div>
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+      <div className="max-w-7xl mx-auto p-6 md:p-12">
+        <div className="space-y-12 animate-fade-in">
+          <header className="text-center mb-16">
+            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500 mb-4">
+              王凯禹
+            </h1>
+            <p className="text-xl text-gray-500">算法工程师</p>
+          </header>
+          <Schoolar />
+          <Summary />
+          <Experience />
+          <Skills />
+          <Awards />
+          <Hobbies />
+          <SocialMedia />
         </div>
-        <Schoolar />
-        <Summary />
-        <Experience />
-        <Skills />
-        <Awards />
-        <Hobbies />
-        <SocialMedia />
       </div>
     </main>
   );
@@ -61,16 +62,11 @@ function Summary() {
         </p>
         <p>
           技术专长包括 LLM
-          应用开发、分布式系统设计和全栈开发。在项目中多次实现显著的性能提升和成本优化，如将
-          LLM
-          推理速度提升147%，系统响应时间减少40%。同时积极参与开源社区，维护多个开源项目。
+          应用开发、系统设计和全栈开发。同时积极参与开源社区，维护多个开源项目。
         </p>
         <p>
-          具备全面的技术栈，精通前端（React、Vue、Next.js）和后端（Spring
-          Boot、FastAPI）开发，能独立完成从架构设计到部署运维的完整开发流程。深入理解
-          DevOps 实践，熟练使用 Docker、Kubernetes、Jenkins
-          等工具进行容器化部署和自动化运维。具备 Linux
-          系统管理和调优经验，同时对服务器硬件架构有深入了解。
+          具备全面的技术栈，熟练使用前端（React、Vue、Next.js）和后端（Spring
+          Boot、FastAPI）开发，能独立完成从架构设计到部署运维的完整开发流程。
         </p>
         <p>
           热衷于探索和学习新技术，对 AI
@@ -126,7 +122,7 @@ function Experience() {
         "设计并实现 GPU 资源调度系统，支持单 GPU 8 人并发对话",
         "开发自动化 AI 资源分配与排队机制，优化用户等待体验",
         "实现动态负载均衡，根据 GPU 使用率自动扩缩容",
-        "项目成果：服务成本降低 35%，用户等待时间减少 60%",
+        "项目成果：系统运营成本降低 35%，用户平均响应时间减少 60%，并发处理能力提升 3 倍",
       ],
       techStack: ["Python", "PyTorch", "CUDA", "FastAPI", "Redis", "Docker"],
     },
@@ -144,12 +140,13 @@ function Experience() {
       techStack: ["Python", "PyTorch", "BERT", "Neo4j", "FastAPI", "Docker"],
     },
     {
-      title: "优小蜜智能客服全栈开发",
+      title: "优小蜜智能客服",
       duration: "2023.06 - 2023.10",
       description: [
         "主导大模型技术选型与架构设计，完成项目全栈开发",
+        "处理历史客服语音文件，构建公司内部知识库，通过RAG技术实现智能问答",
         "设计并实现基于 ChatGPT 的多轮对话系统，支持上下文记忆和知识库检索",
-        "开发智能路由分发系统，根据用户问题类型自动分配到不同的专业客服团队",
+        "开发智能路由分发系统，根据用户问题类型自动分配到不同的微调模型",
         "使用 Redis 实现会话管理和缓存，优化响应速度提升约 40%",
         "项目上线后客服电话量降低约 25%，电话接通率提升 15%",
         "对话日均处理量超 2000 条，平均响应时间 0.35 秒",
@@ -174,8 +171,10 @@ function Experience() {
       description: [
         "负责搜索系统的架构设计和性能优化",
         "使用 Elastic Search 构建分布式搜索引擎，实现商品的全文检索和智能推荐",
-        "设计并实现基于用户行为的个性化搜索排序算法",
-        "项目成果：物资查询速度提升 37%，搜索转化率提升 11.2%，年订单量超亿元",
+        "基于BERT与LLM，冷启动类目预测模型，实现通过搜索关键词快速匹配到类目",
+        "基于Neo4j，构建商品知识图谱，通过向量相似算法实现通过搜索词快速匹配到商品属性",
+        "基于jieba分词与历史搜索记录，构建Trie树，实现搜索关键词的快速匹配",
+        "项目成果：物资查询速度提升 37%，搜索准确率提升17%，搜索转化率提升 11.2%，年订单量超亿元",
         "获评安徽省优质采年度优秀项目，成为公司 CMMI 认证的标杆项目",
       ],
       techStack: ["Spring Boot", "Elastic Search", "TiDB", "Redis", "MySQL"],
@@ -236,40 +235,66 @@ function Experience() {
   ];
 
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="text-xl font-bold font-mono">工作经历</div>
-      <div className="space-y-8">
+    <div className="flex flex-col space-y-6">
+      <div className="text-2xl font-bold font-mono mb-8 flex items-center">
+        <span className="bg-blue-400 w-2 h-8 mr-3 rounded"></span>
+        工作经历
+      </div>
+      <div className="space-y-12">
         {data.map((item, index) => (
-          <div key={index} className="border-l-4 border-gray-200 pl-4">
-            <div className="flex justify-between items-center">
-              <h3 className="font-bold text-lg">{item.title}</h3>
-              <span className="text-gray-500 text-sm">{item.duration}</span>
-            </div>
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              {item.description.map((desc, i) => (
-                <li key={i} className="text-gray-700">
-                  {desc}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {item.techStack.map((tech, i) => (
-                <span
-                  key={i}
-                  className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-sm"
-                >
-                  {tech}
+          <div key={index} className="group">
+            <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100/50">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                <h3 className="font-bold text-xl text-blue-500">
+                  {item.title}
+                </h3>
+                <span className="text-gray-500 text-sm mt-2 md:mt-0">
+                  {item.duration}
                 </span>
-              ))}
+              </div>
+              <ul className="list-none pl-0 mt-4 space-y-2">
+                {item.description.map((desc, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start space-x-2 text-gray-700"
+                  >
+                    <span className="text-blue-500 mt-1">•</span>
+                    <span>{desc}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {item.techStack.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="bg-blue-50/50 text-blue-500 px-3 py-1 rounded-full text-sm font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              {item.link && (
+                <a
+                  href={item.link}
+                  className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700"
+                >
+                  查看项目
+                  <svg
+                    className="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
+              )}
             </div>
-            {item.link && (
-              <a
-                href={item.link}
-                className="text-blue-500 hover:underline mt-2 inline-block"
-              >
-                项目链接 →
-              </a>
-            )}
           </div>
         ))}
       </div>
@@ -314,21 +339,29 @@ function Skills() {
     "NLP",
   ];
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="text-xl font-bold font-mono">技能</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="flex flex-col space-y-6">
+      <div className="text-2xl font-bold font-mono mb-8 flex items-center">
+        <span className="bg-purple-400 w-2 h-8 mr-3 rounded"></span>
+        技能专长
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {highlightedSkills.map((skill, index) => (
-          <div key={index}>
-            <div className="font-bold">{skill.name}</div>
-            <p className="text-gray-700">{skill.description}</p>
+          <div
+            key={index}
+            className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <div className="font-bold text-lg text-purple-500 mb-2">
+              {skill.name}
+            </div>
+            <p className="text-gray-600">{skill.description}</p>
           </div>
         ))}
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap gap-2 mt-6">
         {otherSkills.map((skill, index) => (
           <span
             key={index}
-            className="bg-gray-200 text-gray-800 px-2 py-1 rounded-full text-sm font-medium mr-2 mb-2"
+            className="bg-purple-50/50 text-purple-500 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-100/50 transition-colors duration-200"
           >
             {skill}
           </span>
@@ -378,13 +411,21 @@ function Hobbies() {
   ];
 
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="text-xl font-bold font-mono">爱好</div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="flex flex-col space-y-6">
+      <div className="text-2xl font-bold font-mono mb-8 flex items-center">
+        <span className="bg-orange-400 w-2 h-8 mr-3 rounded"></span>
+        爱好
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {hobbies.map((hobby, index) => (
-          <div key={index} className="bg-gray-100 rounded-lg p-4">
-            <div className="font-bold">{hobby.name}</div>
-            <p className="text-gray-700">{hobby.description}</p>
+          <div
+            key={index}
+            className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100/50"
+          >
+            <div className="font-bold text-lg text-orange-500 mb-2">
+              {hobby.name}
+            </div>
+            <p className="text-gray-600">{hobby.description}</p>
           </div>
         ))}
       </div>
@@ -416,15 +457,18 @@ function SocialMedia() {
   ];
 
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="text-xl font-bold font-mono">社交媒体</div>
-      <div className="flex gap-4">
+    <div className="flex flex-col space-y-6">
+      <div className="text-2xl font-bold font-mono mb-8 flex items-center">
+        <span className="bg-green-400 w-2 h-8 mr-3 rounded"></span>
+        社交媒体
+      </div>
+      <div className="flex gap-6">
         {platforms.map((platform, index) => (
           <a
             aria-label={platform.name}
             href={platform.url}
             key={index}
-            className="bg-gray-100 rounded-full p-2 hover:bg-gray-200"
+            className="text-2xl hover:scale-110 transition-transform duration-200 text-gray-500 hover:text-blue-500"
           >
             {platform.icon}
           </a>
