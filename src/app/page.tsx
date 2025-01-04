@@ -14,6 +14,7 @@ export default async function Home() {
           </div>
         </div>
         <Schoolar />
+        <Summary />
         <Experience />
         <Skills />
         <Awards />
@@ -48,11 +49,43 @@ function Schoolar() {
   );
 }
 
+function Summary() {
+  return (
+    <div className="flex flex-col space-y-2">
+      <div className="text-xl font-bold font-mono">个人概述</div>
+      <div className="text-gray-700 space-y-2">
+        <p>
+          资深算法工程师，专注于 AI
+          应用开发和大规模系统优化。在自然语言处理、知识图谱构建和智能对话系统等领域拥有丰富经验。主导开发多个大型
+          AI 项目，包括智能客服系统、招标文件分析系统和商品比价系统等。
+        </p>
+        <p>
+          技术专长包括 LLM
+          应用开发、分布式系统设计和全栈开发。在项目中多次实现显著的性能提升和成本优化，如将
+          LLM
+          推理速度提升147%，系统响应时间减少40%。同时积极参与开源社区，维护多个开源项目。
+        </p>
+        <p>
+          具备全面的技术栈，精通前端（React、Vue、Next.js）和后端（Spring
+          Boot、FastAPI）开发，能独立完成从架构设计到部署运维的完整开发流程。深入理解
+          DevOps 实践，熟练使用 Docker、Kubernetes、Jenkins
+          等工具进行容器化部署和自动化运维。具备 Linux
+          系统管理和调优经验，同时对服务器硬件架构有深入了解。
+        </p>
+        <p>
+          热衷于探索和学习新技术，对 AI
+          领域的前沿发展保持高度关注。具有强烈的工程师思维和创新精神，善于在实际项目中应用新技术解决问题。乐于分享技术经验，在技术社区积极贡献，同时具备良好的团队协作能力和沟通技巧。
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function Experience() {
   const data = [
     {
-      title: "商城比价系统优化",
-      duration: "2024.01 - 2024.03",
+      title: "优采商城比价系统",
+      duration: "2024.01 - 2024.10",
       description: [
         "设计并实现新版同款物资识别算法，提升新旧商品覆盖率达到 85%（覆盖率提高 20%）",
         "基于 NER 技术，实现商品名称、型号自动识别，提升商品识别准确率 10%",
@@ -64,7 +97,7 @@ function Experience() {
     },
     {
       title: "招标文件智能分析系统",
-      duration: "2024.01 - 2024.03",
+      duration: "2024.10 - 2024.12",
       description: [
         "设计并实现基于 LLM 的招标文件智能分析系统，支持多种格式文件解析",
         "开发招标要求自动提取模块，实现关键信息（资质要求、评分标准等）的精准识别",
@@ -75,7 +108,7 @@ function Experience() {
     },
     {
       title: "招标法律法规问答系统",
-      duration: "2024.02 - 2024.03",
+      duration: "2024.10 - 2024.12",
       description: [
         "基于 RAG 技术构建专业招标法律法规知识库，覆盖 1000+ 法规文件",
         "设计并实现多轮对话上下文管理，支持复杂法律场景推理",
@@ -87,7 +120,7 @@ function Experience() {
     },
     {
       title: "AI 项目资源调度系统",
-      duration: "2024.01 - 2024.02",
+      duration: "2024.10 - 2024.12",
       description: [
         "优化 LLM 推理框架，将输出速度从 80 token/s 提升至 197 token/s（提升 147%）",
         "设计并实现 GPU 资源调度系统，支持单 GPU 8 人并发对话",
@@ -98,8 +131,21 @@ function Experience() {
       techStack: ["Python", "PyTorch", "CUDA", "FastAPI", "Redis", "Docker"],
     },
     {
+      title: "工业品智能问答系统",
+      duration: "2023.11 - 2024.01",
+      description: [
+        "负责项目整体架构设计和核心算法开发",
+        "设计并实现工业品领域知识图谱，包含超过 50 万实体和 100 万关系",
+        "开发基于 BERT 和 BiLSTM-CRF 的实体识别模型，准确率达到 95%",
+        "实现基于知识图谱的智能问答系统，支持复杂多轮对话",
+        "项目成果：日均处理问题量超 2000 条，答案准确率 87%，RAG 召回率提升 13.1%",
+        "项目获安徽省经信厅专项支持",
+      ],
+      techStack: ["Python", "PyTorch", "BERT", "Neo4j", "FastAPI", "Docker"],
+    },
+    {
       title: "优小蜜智能客服全栈开发",
-      duration: "2023.06 - 2024.03",
+      duration: "2023.06 - 2023.10",
       description: [
         "主导大模型技术选型与架构设计，完成项目全栈开发",
         "设计并实现基于 ChatGPT 的多轮对话系统，支持上下文记忆和知识库检索",
@@ -110,9 +156,11 @@ function Experience() {
         "获评安徽省优质采创新项目二等奖",
       ],
       techStack: [
+        "Milvus",
+        "LangGraph",
+        "vLLM",
+        "Pytorch",
         "Vue3",
-        "Pinia",
-        "ExpressJS",
         "Spring Boot",
         "ChatGPT",
         "Redis",
@@ -132,19 +180,6 @@ function Experience() {
       ],
       techStack: ["Spring Boot", "Elastic Search", "TiDB", "Redis", "MySQL"],
       link: "https://www.youzhicai.com/xdmysc",
-    },
-    {
-      title: "工业品智能问答系统",
-      duration: "2022.07 - 2022.12",
-      description: [
-        "负责项目整体架构设计和核心算法开发",
-        "设计并实现工业品领域知识图谱，包含超过 50 万实体和 100 万关系",
-        "开发基于 BERT 和 BiLSTM-CRF 的实体识别模型，准确率达到 95%",
-        "实现基于知识图谱的智能问答系统，支持复杂多轮对话",
-        "项目成果：日均处理问题量超 2000 条，答案准确率 87%，RAG 召回率提升 13.1%",
-        "项目获安徽省经信厅专项支持",
-      ],
-      techStack: ["Python", "PyTorch", "BERT", "Neo4j", "FastAPI", "Docker"],
     },
     {
       title: "lanyun-chatgpt（个人项目）",
